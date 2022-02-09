@@ -1,0 +1,39 @@
+#!/bin/sh /etc/rc.common
+
+USE_PROCD=1
+CONFIGURATION=rutx-watson
+START=94
+STOP=94
+
+start_service() {
+        local enabled
+        local orgId
+	local typeId
+	local deviceId
+	local token
+
+        config_load "${CONFIGURATION}"
+        config_get enabled "identity" enabled
+        config_get orgId "identity" orgId
+        config_get typeId "identity" typeId
+        config_get deviceId "identity" deviceId
+        config_get token "auth" token
+
+        if [ "$enabled" == "1" ] ; then
+                procd_open_instance
+                procd_set_param file /etc/config/rutx-watson
+                procd_set_param command /usr/bin/rutx-watson -o "$orgId" -t "$typeId" -d "$deviceId" -n "$token"
+                procd_set_param pidfile /var/run/rutx-watson.pid
+                procd_close_instance
+	fi
+	
+}
+
+service_triggers() {
+        procd_add_reload_trigger "rutx-watson"
+}
+
+reload_service() {
+        stop
+        start
+}

@@ -1,0 +1,1 @@
+int only_one_instance(void);
