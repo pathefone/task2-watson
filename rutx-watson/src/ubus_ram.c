@@ -72,6 +72,13 @@ int get_ram_usage(char *data) {
 	struct ubus_context *ctx;
 	uint32_t id;
 	ram_memory ram_mem;
+	
+	//in case of undefined behaviour
+	ram_mem.TOTAL_MEMORY = 0;
+	ram_mem.FREE_MEMORY = 0;
+	ram_mem.SHARED_MEMORY = 0;
+	ram_mem.BUFFERED_MEMORY = 0;
+	
 
 	ctx = ubus_connect(NULL);
 	if (!ctx) {
