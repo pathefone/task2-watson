@@ -19,10 +19,6 @@ IoTPDevice *connect_watson(int argc, char *argv[], IoTPConfig *config)
 
     //IoTPConfig *config = NULL;
     IoTPDevice *device = NULL;
-    
-    /* Set signal handlers */
-    signal(SIGINT, sigHandler);
-    signal(SIGTERM, sigHandler);
 
     /* Create IoTPDevice object */
     rc = IoTPDevice_create(&device, config);
