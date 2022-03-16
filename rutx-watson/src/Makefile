@@ -1,7 +1,7 @@
 BIN:=rutx-watson
 SRC:=$(wildcard *.c)
 OBJS:=$(SRC:.c=.o)
-LDFLAGS:=-liotp-as-device -lpaho-mqtt3as -lblobmsg_json -lubox -lubus -largp -luci
+LDFLAGS:=-liotp-as-device -lpaho-mqtt3as -lblobmsg_json -lubox -lubus -largp
 
 .PHONY: all clean
 
