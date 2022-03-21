@@ -64,7 +64,7 @@ void disconnect_device(IoTPDevice *device, IoTPConfig *config)
 
     if (rc != IOTPRC_SUCCESS) {
         syslog(LOG_ALERT, "Failed to disconnect device from Watson IoT platform.");
-        exit(1);    
+        exit(1);    //change to do a cleanup before exiting
     }
     else {
         syslog(LOG_ALERT, "Successfully disconnected device from Watson IoT platform");
