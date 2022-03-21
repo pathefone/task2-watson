@@ -29,12 +29,12 @@ int only_one_instance(void)
   	if (lock.l_type == F_WRLCK)
   	{
      	printf("Process %ld has a write lock already!\n", lock.l_pid);
-     	exit(1);
+     	exit(1); // change and do cleanup before exiting
   	}
   	else if (lock.l_type == F_RDLCK)
   	{
      	printf("Process %ld has a read lock already!\n", lock.l_pid);
-     	exit(1);
+     	exit(1); // change and do cleanup before exiting
   	}
   	else
      	fcntl(fd, F_SETLK, &savelock);
