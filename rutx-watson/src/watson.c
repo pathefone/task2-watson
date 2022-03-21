@@ -25,7 +25,7 @@ IoTPDevice *connect_watson(int argc, char *argv[], IoTPConfig *config)
     if (rc != 0)
     {
         syslog(LOG_ERR, "Failed to configure IoTP device. rc: %d", rc);
-        exit(1);
+        exit(1); // do cleanup before exit
     }
 
     /* Invoke connection API IoTPDevice_connect() to connect to WIoTP. */
@@ -34,7 +34,7 @@ IoTPDevice *connect_watson(int argc, char *argv[], IoTPConfig *config)
     if (rc != 0)
     {
         syslog(LOG_ERR, "Failed to connect to Watson IoT Platform.");
-        exit(1);
+        exit(1); // do cleanup before exit
     }
 
     syslog(LOG_ALERT, "Successfully connected to watson ibm.");
